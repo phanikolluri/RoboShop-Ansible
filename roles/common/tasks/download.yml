@@ -1,11 +1,11 @@
+- name: Install nginx
+  ansible.builtin.yum:
+    name: nginx
+    state: installed
+
 - name: Remove {{ COMPONENT }} content
   ansible.builtin.file:
     path: "{{ APP_LOCATION }}"
     state: absent
 
-- name: Download and Extract {{ COMPONENT }} content
-  ansible.builtin.unarchive:
-    src: https://github.com/roboshop-devops-project/{{ COMPONENT }}/archive/main.zip
-    dest: "/tmp"
-    remote_src: yes
 
