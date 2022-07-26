@@ -38,10 +38,12 @@
 #PRINT "Restart nginx service"
 #systemctl enable nginx &>>${LOG} && systemctl restart nginx &>>${LOG}
 #CHECK_STAT $?
+#
+#- name: Install Nginx
+#  ansible.builtin.yum:
+#    name: nginx
+#    state: installed
 
-- name: Install Nginx
-  ansible.builtin.yum:
-    name: nginx
-    state: installed
-
-    
+- name: Testing frontend
+  ansible.builtin.debug:
+    msg: Hello world
