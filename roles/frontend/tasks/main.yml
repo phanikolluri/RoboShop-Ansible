@@ -1,8 +1,4 @@
-#PRINT "remove old content"
-#cd /usr/share/nginx/html
-#rm -rf * &>>${LOG}
-#CHECK_STAT $?
-#
+
 #PRINT "Extract frontend content"
 #unzip /tmp/frontend.zip &>>${LOG}
 #CHECK_STAT $?
