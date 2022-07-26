@@ -8,11 +8,6 @@
     path: "{{ APP_LOCATION }}"
     state: absent
 
-- name: Create app location
-  ansible.builtin.file:
-    path: "{{ APP_LOCATION }}"
-    state: directory
-
 - name: Extract {{ COMPONENT }} content
   ansible.builtin.unarchive:
     src: /tmp/{{ COMPONENT }}.zip
