@@ -6,7 +6,7 @@
 - name: Create app content
   ansible.builtin.file:
     path: "{{ APP_LOCATION }}"
-    state: present
+    state: directory
 
 - name: Download and Extract {{ COMPONENT }} content
   ansible.builtin.unarchive:
