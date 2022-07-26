@@ -1,0 +1,5 @@
+- name: roboshop
+  hosts: "{{HOST}}"
+  become: yes
+  roles:
+    - "{{ROLE}}"
