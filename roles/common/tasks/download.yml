@@ -1,7 +1,7 @@
 - name: Download {{ COMPONENT }} content
   ansible.builtin.get_url:
     url: https://github.com/roboshop-devops-project/{{ COMPONENT }}/archive/main.zip
-    dest: /tmp/{{ COMPONENT }}-main
+    dest: /tmp/{{ COMPONENT }}.zip
 
 - name: Remove {{ COMPONENT }} content
   ansible.builtin.file:
@@ -10,6 +10,6 @@
 
 - name: Extract {{ COMPONENT }} content
   ansible.builtin.unarchive:
-    src: /tmp/{{ COMPONENT }}-main
+    src: /tmp/{{ COMPONENT }}.zip
     dest: /tmp
     remote_src: yes
