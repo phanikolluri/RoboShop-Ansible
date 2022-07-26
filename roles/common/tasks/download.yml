@@ -1,7 +1,7 @@
-- name: Install nginx
-  ansible.builtin.yum:
-    name: nginx
-    state: installed
+- name: Download {{ COMPONENT }} content
+  ansible.builtin.get_url:
+    url: https://github.com/roboshop-devops-project/{{ COMPONENT }}/archive/main.zip
+    dest: /tmp/{{ COMPONENT }}.zip
 
 - name: Remove {{ COMPONENT }} content
   ansible.builtin.file:
