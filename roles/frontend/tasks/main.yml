@@ -1,7 +1,4 @@
 
-#PRINT "Extract frontend content"
-#unzip /tmp/frontend.zip &>>${LOG}
-#CHECK_STAT $?
 #
 #PRINT "Organise frontend content"
 #mv frontend-main/static/* . &>>${LOG}
