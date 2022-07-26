@@ -8,4 +8,9 @@
     path: "{{ APP_LOCATION }}"
     state: absent
 
+- name: Extract {{ COMPONENT }} content
+  ansible.builtin.unarchive:
+    src: /tmp/{{ COMPONENT }}.zip
+    dest: /tmp
+    remote_src: yes
 
