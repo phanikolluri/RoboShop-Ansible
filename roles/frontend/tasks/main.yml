@@ -1,16 +1,3 @@
-#PRINT "Install nginx "
-#yum install nginx -y &>>${LOG}
-#CHECK_STAT $?
-#
-#PRINT "Start Nginx service"
-#systemctl start nginx &>>${LOG} && systemctl enable nginx &>>${LOG}
-#CHECK_STAT $?
-#
-#
-#PRINT "Download frontend content"
-#curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip" &>>${LOG}
-#CHECK_STAT $?
-#
 #PRINT "remove old content"
 #cd /usr/share/nginx/html
 #rm -rf * &>>${LOG}
