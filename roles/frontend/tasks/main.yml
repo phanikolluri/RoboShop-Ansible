@@ -1,4 +1,45 @@
-- name: Install Nginx
+#PRINT "Install nginx "
+#yum install nginx -y &>>${LOG}
+#CHECK_STAT $?
+#
+#PRINT "Start Nginx service"
+#systemctl start nginx &>>${LOG} && systemctl enable nginx &>>${LOG}
+#CHECK_STAT $?
+#
+#
+#PRINT "Download frontend content"
+#curl -s -L -o /tmp/${COMPONENT}.zip "https://github.com/roboshop-devops-project/${COMPONENT}/archive/main.zip" &>>${LOG}
+#CHECK_STAT $?
+#
+#PRINT "remove old content"
+#cd /usr/share/nginx/html
+#rm -rf * &>>${LOG}
+#CHECK_STAT $?
+#
+#PRINT "Extract ${COMPONENT} content"
+#unzip /tmp/${COMPONENT}.zip &>>${LOG}
+#CHECK_STAT $?
+#
+#PRINT "Organise frontend content"
+#mv ${COMPONENT}-main/static/* . &>>${LOG}
+#CHECK_STAT $?
+#
+#PRINT "Setup system configuration"
+#mv ${COMPONENT}-main/localhost.conf /etc/nginx/default.d/roboshop.conf &>>${LOG}
+#CHECK_STAT $?
+#
+#for backend in cart-1 catalogue-1 user-1 shipping-1 payment-1; do
+#PRINT "Update $backend configuration"
+#  #sed -i -e '/catalogue/ s/localhost/catalogue-1.roboshop.internal/' -e '/user/ s/localhost/user-1.roboshop.internal/' -e '/cart/ s/localhost/cart-1.roboshop.internal/' -e '/shipping/ s/localhost/shipping-1.roboshop.internal/' -e '/payment/ s/localhost/payment-1.roboshop.internal/' /etc/nginx/default.d/roboshop.conf
+#CHECK_STAT $?
+#sed -i -e "/$backend/ s/localhost/$backend.roboshop.internal/" /etc/nginx/default.d/roboshop.conf
+#done
+#
+#PRINT "Restart nginx service"
+#systemctl enable nginx &>>${LOG} && systemctl restart nginx &>>${LOG}
+#CHECK_STAT $?
+
+- name: Install nginx
   ansible.builtin.yum:
     name: nginx
     state: installed

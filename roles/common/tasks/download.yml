@@ -1,7 +1,7 @@
-- name: Remove App content
-  ansible.builtin.file:
-    path: "{{ APP_LOCATION }}"
-    state: absent
+#- name: Remove App content
+#  ansible.builtin.file:
+#    path: "{{ APP_LOCATION }}"
+#    state: absent
 
 #- name: Create app content
 #  ansible.builtin.file:
