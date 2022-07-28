@@ -1,0 +1,29 @@
+
+#PRINT "Start redis service"
+#systemctl enable redis &>>${LOG} && systemctl start redis &>>${LOG}
+#CHECK_STAT $?
+
+- name: Download redis yum repos
+  ansible.builtin.template:
+    src: redis.repo
+    dest: /etc/yum.repos.d/redis.repo
+
+- name: Install Redis
+  ansible.builtin.yum:
+    name: redis-6.2.7
+    state: installed
+
+- name: Replace server ip address
+  ansible.builtin.replace:
+    path: "{{item}}"
+    regexp: '127.0.0.1'
+    replace: '0.0.0.0'
+  loop:
+    - /etc/redis.conf
+    - /etc/redis/redis.conf
+
+- name: restart {{ COMPONENT }} service
+  ansible.builtin.systemd:
+    name: "{{ COMPONENT }}"
+    state: restarted
+    enabled: yes
