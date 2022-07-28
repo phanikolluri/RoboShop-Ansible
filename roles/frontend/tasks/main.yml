@@ -8,10 +8,10 @@
     name: common
     tasks_from: download
 
-#- name: Copy systemd configuration
-#  ansible.builtin.template:
-#    src: roboshop.conf
-#    dest: /etc/nginx/default.d/roboshop.conf
+- name: Copy systemd configuration
+  ansible.builtin.template:
+    src: roboshop.conf
+    dest: /etc/nginx/default.d/roboshop.conf
 
 - name: restart Nginx service
   ansible.builtin.systemd:
