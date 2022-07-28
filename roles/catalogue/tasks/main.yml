@@ -1,11 +1,4 @@
-
-#PRINT "Download ${COMPONENT} dependencies"
-#npm install  &>>${LOG}
-#CHECK_STAT $?
-#
-#SYSTEMD
-
-name: Import {{ COMPONENT }} role
+- name: Import {{ COMPONENT }} role
   ansible.builtin.include_role:
     name: common
     tasks_from: nodejs
