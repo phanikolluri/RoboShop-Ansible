@@ -21,9 +21,9 @@
     dest: /etc/systemd/system/{{ COMPONENT }}.service
     daemon_reload: yes
 
-- name: restart nodejs service
+- name: restart {{ COMPONENT }} service
   ansible.builtin.systemd:
-    name: nodejs
+    name: {{ COMPONENT }}
     state: restarted
     enabled: yes
 
