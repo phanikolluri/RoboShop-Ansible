@@ -15,5 +15,18 @@
   community.general.npm:
     path: "{{ APP_LOCATION }}"
 
+- name: setup updating server
+  ansible.builtin.template:
+    src: systemd.service
+    dest: /etc/systemd/system/{{ COMPONENT }}.service
+    daemon_reload: yes
+
+- name: restart nodejs service
+  ansible.builtin.systemd:
+    name: nodejs
+    state: restarted
+    enabled: yes
+
+
 
 
