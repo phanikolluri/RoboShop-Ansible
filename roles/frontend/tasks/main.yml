@@ -37,8 +37,8 @@
     name: nginx
     state: installed
 
-- name: setting up {{ COMPONENT }} configuration
-  ansible.builtin.copy:
-    src: common
-    dest: download
-    remote_src: yes
+- name: Include {{ COMPONENT }} role
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: download
+
