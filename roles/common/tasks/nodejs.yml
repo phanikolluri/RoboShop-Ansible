@@ -15,19 +15,10 @@
   community.general.npm:
     path: "{{ APP_LOCATION }}"
 
-- name: setup updating server
-  ansible.builtin.template:
-    src: systemd.service
-    dest: /etc/systemd/system/{{ COMPONENT }}.service
-
-
-- name: restart {{ COMPONENT }} service
-  ansible.builtin.systemd:
-    name: "{{ COMPONENT }}"
-    state: restarted
-    enabled: yes
-    daemon_reload: yes
-
+- name: Include {{ COMPONENT }} systemd configuration
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: systemd.service
 
 
 
