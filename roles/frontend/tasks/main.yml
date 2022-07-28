@@ -1,14 +1,7 @@
-#PRINT "Install nginx "
-#yum install nginx -y &>>${LOG}
-#CHECK_STAT $?
+
 #
 #PRINT "Start Nginx service"
 #systemctl start nginx &>>${LOG} && systemctl enable nginx &>>${LOG}
-#CHECK_STAT $?
-#
-#
-#PRINT "Download frontend content"
-#curl -s -L -o /tmp/${COMPONENT}.zip "https://github.com/roboshop-devops-project/${COMPONENT}/archive/main.zip" &>>${LOG}
 #CHECK_STAT $?
 #
 #PRINT "remove old content"
@@ -43,3 +36,9 @@
   ansible.builtin.yum:
     name: nginx
     state: installed
+
+- name: setting up {{ COMPONENT }} configuration
+  ansible.builtin.copy:
+    src: common
+    dest: download
+    remote_src: yes
