@@ -1,6 +1,6 @@
 - name: Download {{ COMPONENT }} content
   ansible.builtin.get_url:
-    url: https://github.com/roboshop-devops-project/${COMPONENT}/archive/main.zip
+    url: https://github.com/roboshop-devops-project/{{ COMPONENT }}/archive/main.zip
     dest: /etc/{{ COMPONENT }}.zip
 
 - name: Remove old {{ COMPONENT }} content
