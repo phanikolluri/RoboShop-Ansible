@@ -8,7 +8,7 @@
     name: mongodb-org
     state: installed
 
-- name: Replace listen server
+- name: Replace server ip address
   ansible.builtin.replace:
     path: /etc/mongod.conf
     regexp: '127.0.0.1'
@@ -16,7 +16,7 @@
 
 - name: restart mongodb service
   ansible.builtin.systemd:
-    name: mongodb
+    name: mongod
     state: restarted
     enabled: yes
 
