@@ -61,7 +61,7 @@
   community.mysql.mysql_db:
     name: all
     state: import
-    target: /tmp/mysql_main/shipping.sql
+    target: /tmp/mysql-main/shipping.sql
     login_user: root
     login_password: "{{MYSQL_PASSWORD}}"
 
