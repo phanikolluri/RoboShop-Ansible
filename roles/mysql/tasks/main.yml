@@ -45,6 +45,15 @@
     state: started
     enabled: yes
 
+- name: Fetch MYSQL log-file
+  ansible.builtin.slurp:
+    src: /var/log/mysqld.log
+  register: mysql_log
+
+
+
+
+
 
 
 
