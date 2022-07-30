@@ -55,7 +55,7 @@
 - name: Check MYSQL PASSWORD reset or not
   community.mysql.mysql_info:
     login_user: root
-    login_password: {{MYSQL_PASSWORD}}
+    login_password: "{{MYSQL_PASSWORD}}"
     filter: version
     ignore_errors: yes
     register: mysql_connection
