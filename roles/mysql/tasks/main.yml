@@ -52,11 +52,9 @@
 
 - name: Fetch password from MYSQL LOG file
   ansible.builtin.set_fact:
-    LINE: "{{mysql_log['content'] | b64decode | regex_findall('.*temporary password.*') | join(' ') | split(' ') | last }}"
+    DEFAULT_PASSWORD: "{{mysql_log['content'] | b64decode | regex_findall('.*temporary password.*') | join(' ') | split(' ') | last }}"
 
-- name: print
-  debug:
-    msg: "{{LINE}}"
+
   
 
 
