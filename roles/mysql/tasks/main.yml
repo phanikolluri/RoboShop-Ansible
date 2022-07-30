@@ -1,0 +1,52 @@
+#
+#MYSQL_DEFAULT_PASSWORD=$( grep 'temporary password' /var/log/mysqld.log | awk '{print $NF}')
+#
+#echo show databases | mysql -uroot -p"${MYSQL_PASSWORD}" &>>${LOG}
+#if [ $? -ne 0 ]; then
+#PRINT "Reset MYSQL_DEFAULT_PASSWORD"
+#echo "ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_PASSWORD}';" | mysql  --connect-expired-password -uroot -p"${MYSQL_DEFAULT_PASSWORD}" &>>${LOG}
+#CHECK_STAT $?
+#fi
+#
+#
+#echo show plugins |  mysql -uroot -p"${MYSQL_PASSWORD}" 2>>${LOG} | grep validate_pasword &>>${LOG}
+#if [ $? -eq 0 ]; then
+#PRINT "Uninstall validate password plugin"
+#echo "uninstall plugin validate_password;" | mysql -uroot -p"${MYSQL_PASSWORD}" &>>${LOG}
+#CHECK_STAT $?
+#fi
+#
+#PRINT "Download Mysql content"
+#curl -s -L -o /tmp/mysql.zip https://github.com/roboshop-devops-project/mysql/archive/main.zip &>>${LOG}
+#CHECK_STAT $?
+#
+#PRINT "Extract mysql configuration"
+#cd /tmp && unzip -o mysql.zip &>>${LOG} && cd mysql-main && mysql -uroot -p"${MYSQL_PASSWORD}" <shipping.sql &>>${LOG}
+#CHECK_STAT $?
+
+- name: Fail if MYSQL_PASSWORD does not exist
+  ansible.builtin.fail:
+    msg: MYSQL_PASSWORD variable is missing
+    when: MYSQL_PASSWORD is undefined
+
+- name: Setup Yum repos
+  ansible.builtin.template:
+    src: mysql.repo
+    dest: /etc/yum.repos.d/mysql.repo
+
+- name: Install MYSQL
+  ansible.builtin.yum:
+    name: mysql-community-server
+    state: installed
+
+- name: Start MYSQL service
+  ansible.builtin.systemd:
+    name: mysql-community-server
+    state: started
+    enabled: yes
+
+
+
+
+
+
