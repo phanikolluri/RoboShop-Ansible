@@ -50,7 +50,9 @@
     src: /var/log/mysqld.log
   register: mysql_log
 
-
+- name: PRINT
+  DEFAULT_PASSWORD: {{mysql_log['content'] | b64decode }}
+  
 
 
 
