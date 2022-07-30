@@ -50,7 +50,7 @@
     src: /var/log/mysqld.log
   register: mysql_log
 
-- name: PRINT
+- name: Fetch password from MYSQL LOG file
   DEFAULT_PASSWORD: "{{mysql_log['content'] | b64decode }}"
   
 
