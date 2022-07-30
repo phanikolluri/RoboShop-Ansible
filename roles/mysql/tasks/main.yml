@@ -52,7 +52,7 @@
 
 - name: Fetch password from MYSQL LOG file
   ansible.builtin.set_fact:
-    LINE: "{{mysql_log['content'] | b64decode }}"
+    LINE: "{{mysql_log['content'] | b64decode | split(' ') }}"
 
 - name: print
   debug:
