@@ -27,7 +27,7 @@
 - name: Fail if MYSQL_PASSWORD does not exist
   ansible.builtin.fail:
     msg: MYSQL_PASSWORD variable is missing
-    when: MYSQL_PASSWORD is undefined
+  when: MYSQL_PASSWORD is undefined
 
 - name: Setup Yum repos
   ansible.builtin.template:
