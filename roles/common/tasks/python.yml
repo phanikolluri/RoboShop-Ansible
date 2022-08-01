@@ -1,0 +1,33 @@
+- name: Install python3
+  ansible.builtin.yum:
+    name:
+      - python36
+      - gcc
+      - python3-devel
+    state: installed
+
+- name: copy app common setup
+  ansible.builtin.include_role:
+    name: common
+  tasks_from: download
+
+- name: Install python dependencies
+  ansible.builtin.pip:
+    requirements: "{{ APP_LOCATION }}/requirements.txt"
+    executable: pip3
+
+- name: update {{ COMPONENT }} configuration
+  ansible.builtin.lineinfile:
+    path: "{{ APP_LOCATION }}/{{ COMPONENT }}.ini
+    regexp: '^{item.key}'
+    line: "{{item.line}}"
+  loop:
+    - {key="uid", line: "uid = {{app_setup.uid}}"}
+    - {key="gid", line: "gid = {{app_setup.group}}"}
+
+- name: copy systemd file
+  ansible.builtin.include_role:
+    name: common
+  tasks_from: systemd
+
+
