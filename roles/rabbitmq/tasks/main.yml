@@ -28,7 +28,7 @@
     read_priv: .*
     write_priv: .*
     state: present
-    tag: administrator
+    tags: administrator
 
 
 
