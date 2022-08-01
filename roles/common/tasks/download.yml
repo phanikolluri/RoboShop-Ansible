@@ -1,6 +1,7 @@
 - name: Add Application user
   ansible.builtin.user:
     name: roboshop
+  register: app_user
 
 - name: Remove old {{ COMPONENT }} content
   ansible.builtin.file:
