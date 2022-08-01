@@ -10,7 +10,9 @@
 
 - name: Download pip3 dependencies
   ansible.builtin.shell: go mod init dispatch && go get && go build
-
+  args:
+    chdir: /home/roboshop/{{ COMPONENT }}
+    
 - name: Copy systemd configuration
   ansible.builtin.include_role:
     name: common
