@@ -16,14 +16,18 @@
     requirements: "{{ APP_LOCATION }}/requirements.txt"
     executable: pip3
 
+- name: app user content
+  debug:
+    msg: "{{app_user}}"
+
 - name: update {{ COMPONENT }} configuration
   ansible.builtin.lineinfile:
     path: /home/roboshop/{{ COMPONENT }}/{{ COMPONENT }}.ini
     regexp: '^{item.key}'
     line: "{{item.line}}"
   loop:
-    - {key="uid", line: "uid = {{app_setup.uid}}"}
-    - {key="gid", line: "gid = {{app_setup.group}}"}
+    - {key="uid", line: "uid = {{app_user.uid}}"}
+    - {key="gid", line: "gid = {{app_user.group}}"}
 
 - name: copy systemd file
   ansible.builtin.include_role:
