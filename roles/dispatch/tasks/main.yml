@@ -1,4 +1,4 @@
-- name: copy app location
+- name: Import common role -Golang
   ansible.builtin.include_role:
     name: common
     tasks_from: golang
