@@ -1,0 +1,22 @@
+- name: Install Golang
+  ansible.builtin.yum:
+    name: golang
+    state: installed
+
+- name: copy app location
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: download
+
+- name: Download pip3 dependencies
+  ansible.builtin.shell: go mod init dispatch && go get && go build
+
+- name: Copy systemd configuration
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: golang
+
+
+
+
+

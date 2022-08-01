@@ -1,0 +1,3 @@
+COMPONENT: dispatch
+APP_LOCATION: /home/roboshop/{{ COMPONENT }}
+SUFFIX: /
