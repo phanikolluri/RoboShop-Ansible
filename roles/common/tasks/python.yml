@@ -18,7 +18,7 @@
 
 - name: update {{ COMPONENT }} configuration
   ansible.builtin.lineinfile:
-    path: "{{ APP_LOCATION }}/{{ COMPONENT }}.ini
+    path: {{ APP_LOCATION }}/{{ COMPONENT }}.ini
     regexp: '^{item.key}'
     line: "{{item.line}}"
   loop:
