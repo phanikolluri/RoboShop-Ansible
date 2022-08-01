@@ -9,7 +9,7 @@
 - name: copy app common setup
   ansible.builtin.include_role:
     name: common
-  tasks_from: download
+    tasks_from: download
 
 - name: Install python dependencies
   ansible.builtin.pip:
