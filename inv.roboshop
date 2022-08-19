@@ -16,7 +16,7 @@ mysql-p.roboshop.internal
 shipping-p.roboshop.internal
 [RABBITMQ]
 rabbitmq-p.roboshop.internal
-[PAYMENT-P]
+[PAYMENT]
 payment-p.roboshop.internal
 [DISPATCH]
 dispatch-p.roboshop.internal
