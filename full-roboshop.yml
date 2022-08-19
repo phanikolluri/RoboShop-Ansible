@@ -43,7 +43,7 @@
   roles:
     - "rabbitmq-p"
 
-- hosts: PAYMENT
+- hosts: PAYMENT-P
   become: yes
   roles:
     - "payment-p"
