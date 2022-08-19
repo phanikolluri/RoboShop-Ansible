@@ -22,7 +22,7 @@
 
 - name: update {{ COMPONENT }} configuration
   ansible.builtin.lineinfile:
-    path: /home/roboshop/{{ COMPONENTS }}/{{ COMPONENTS }}.ini
+    path: /home/roboshop/{{ COMPONENT }}/{{ COMPONENT }}.ini
     regexp: '^{item.key}'
     line: "{{item.line}}"
   loop:
