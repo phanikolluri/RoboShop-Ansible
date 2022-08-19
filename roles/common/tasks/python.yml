@@ -11,10 +11,10 @@
     name: common
     tasks_from: download
 
-#- name: Install python dependencies
-#  ansible.builtin.pip:
-#    requirements: "{{ APP_LOCATION }}/requirements.txt"
-#    executable: pip3
+- name: Install python dependencies
+  ansible.builtin.pip:
+    requirements: "{{ APP_LOCATION }}/requirements.txt"
+    executable: pip3
 
 - name: app user content
   debug:
