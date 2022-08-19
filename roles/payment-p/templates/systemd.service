@@ -3,7 +3,7 @@ Description=Payment Service
 
 [Service]
 User=root
-WorkingDirectory=/home/roboshop/payment-p
+WorkingDirectory=/home/roboshop/payment
 
 Environment=CART_HOST=cart-p.roboshop.internal
 Environment=USER_HOST=user-p.roboshop.internal
@@ -11,9 +11,9 @@ Environment=AMQP_HOST=rabbitmq-p.roboshop.internal
 Environment=AMQP_USER=roboshop
 Environment=AMQP_PASS={{RABBITMQ_USER_PASSWORD}}
 
-ExecStart=/usr/local/bin/uwsgi --ini payment-p.ini
+ExecStart=/usr/local/bin/uwsgi --ini payment.ini
 ExecStop=/bin/kill -9 $MAINPID
-SyslogIdentifier=payment-p
+SyslogIdentifier=payment
 
 [Install]
 WantedBy=multi-user.target
