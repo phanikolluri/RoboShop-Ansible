@@ -11,9 +11,9 @@
     name: common
     tasks_from: download
 
-- name: Install Dependencies
-  community.general.npm:
-    path: "{{ APP_LOCATION }}"
+#- name: Install Dependencies
+#  community.general.npm:
+#    path: "{{ APP_LOCATION }}"
 
 - name: Include {{ COMPONENT }} systemd configuration
   ansible.builtin.include_role:
