@@ -1,4 +1,4 @@
-COMPONENT: frontend-p
+COMPONENT: frontend
 APP_LOCATION: /usr/share/nginx/html
 SUFFIX: /static/
 
