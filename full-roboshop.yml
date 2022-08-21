@@ -1,56 +1,56 @@
 - hosts: FRONTEND
   become: yes
   roles:
-    - "frontend-p"
+    - "frontend"
 
 - hosts: MONGODB
   become: yes
   roles:
-    - "mongodb-p"
+    - "mongodb"
 
 - hosts: CATALOGUE
   become: yes
   roles:
-    - "catalogue-p"
+    - "catalogue"
 
 - hosts: REDIS
   become: yes
   roles:
-    - "redis-p"
+    - "redis"
 
 - hosts: USER
   become: yes
   roles:
-    - "user-p"
+    - "user"
 
 - hosts: CART
   become: yes
   roles:
-    - "cart-p"
+    - "cart"
 
 - hosts: MYSQL
   become: yes
   roles:
-    - "mysql-p"
+    - "mysql"
 
 - hosts: SHIPPING
   become: yes
   roles:
-    - "shipping-p"
+    - "shipping"
 
 - hosts: RABBITMQ
   become: yes
   roles:
-    - "rabbitmq-p"
+    - "rabbitmq"
 
 - hosts: PAYMENT
   become: yes
   roles:
-    - "payment-p"
+    - "payment"
 
 - hosts: DISPATCH
   become: yes
   roles:
-    - "dispatch-p"
+    - "dispatch"
 
 
